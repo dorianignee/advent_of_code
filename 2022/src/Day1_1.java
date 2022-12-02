@@ -1,5 +1,3 @@
-import java.util.List;
-
 /**
  * Today we have to find the elve with the highest sum of calories and output that sum
  */

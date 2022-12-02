@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.*;
 
@@ -34,7 +33,7 @@ public class Aoc {
      */
     private static Stream<String> tokens(String file, String delimiterPattern) {
         String input = checkFile(file);
-        Scanner data = new Scanner(input); // Leave Scanner open because Stream is closed when Scanner is closed
+        Scanner data = new Scanner(input); // Leave Scanner open because Stream will be closed when Scanner is closed
         data.useDelimiter(delimiterPattern);
         return data.tokens();
     }

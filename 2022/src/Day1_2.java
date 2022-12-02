@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * The second task of the day is to find sum of the top 3 elves calories
