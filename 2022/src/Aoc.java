@@ -7,61 +7,178 @@ import java.util.stream.*;
  */
 public class Aoc {
     /**
-     * Checks, if the paramater is a file in res Folder. 
-     * If it is, returns the contents of the file, else the parameter
-     * @param file A filename or challenge input string
-     * @return contents of the file, if {@code file} is a filename, else {@code file}
+     * The day of the current challenge. 
+     * Set this, so the correct input file can be selected
      */
-    private static String checkFile(String file) {
-        if (file.endsWith(".txt")) {
-            var resource = Aoc.class.getResourceAsStream(file);
-            if (resource == null) throw new RuntimeException("File " + file + " not found.");
-            Scanner scanner = new Scanner(Aoc.class.getResourceAsStream(file));
-            scanner.useDelimiter("\\Z");
-            String data = scanner.next();
-            scanner.close();
-            return data;
+    private int day = 0;
+
+    /**
+     * Set this true, to use the files in the res/test folder
+     */
+    private boolean useTestInput = false;
+
+    /**
+     * Set this to custom values for debugging
+     */
+    private String customInput = null;
+
+    /**
+     * outputs the results of the daily challenges
+     */
+    public final void solve(int day) {
+        this.day = day;
+        if (useTestInput || customInput != null) {
+            System.out.println("#### USING DEBUG INPUT ####");
         }
-        return file;
+        System.out.println("Day" + day + " Result of challenge one:");
+        System.out.println(strChallenge1());
+        System.out.println();
+        System.out.println("Day" + day + " Result of challenge two:");
+        System.out.println(strChallenge2());
+    }
+
+    /**
+     * Result of the first daily challenge
+     * Override this in the subclass for string results
+     * @return string result of first daily challenge if overridden. Else result of {@link #challenge1()}
+     */
+    public String strChallenge1() {
+        return Integer.toString(challenge1());
+    }
+
+    /**
+     * Result of the second daily challenge
+     * Override this in the subclass for string results
+     * @return string result of second daily challenge if overridden. Else result of {@link #challenge2()}
+     */
+    public String strChallenge2() {
+        return Integer.toString(challenge2());
+    }
+
+    /**
+     * Integer result of the first daily challenge
+     * Override this in the subclass for integer results
+     * @return integer result of first daily challenge if overridden
+     * @throws NotImplementedException if neither {@link #strChallenge1()} nor {@link #challenge1()} are overridden
+     */
+    public int challenge1() {
+        throw new NotImplementedException("Day " + day + " challenge 1 not implemented, yet.");
+    }
+
+    /**
+     * Integer result of the second daily challenge
+     * Override this in the subclass for integer results
+     * @return integer result of second daily challenge if overridden
+     * @throws NotImplementedException if neither {@link #strChallenge2()} nor {@link #challenge2()} are overridden
+     */
+    public int challenge2() {
+        throw new NotImplementedException("Day " + day + " challenge 2 not implemented, yet.");
+    }
+
+    /**
+     * Returns the input for the given day depending on {@link #customInput} and {@link #useTestInput}
+     * @return the input for the given day depending on {@link #customInput} and {@link #useTestInput}
+     */
+    private final String getInput() {
+        if (customInput != null) {
+            return customInput;
+        }
+        if (useTestInput) {
+            return readFile(String.format("debug/%02d.txt", day));
+        }
+        return readFile(String.format("%02d.txt", day));
+    }
+
+    /**
+     * Returns the contents of the file with the name {@code fileName}
+     * @param fileName the name of the file
+     * @return the contents of the file with the name {@code fileName}
+     */
+    private static final String readFile(String fileName) {
+        var resource = Aoc.class.getResourceAsStream(fileName);
+        if (resource == null) throw new RuntimeException("File " + fileName + " not found.");
+        try (Scanner scanner = new Scanner(resource)) {
+            scanner.useDelimiter("\\Z");
+            return scanner.next();
+        }
     }
 
     /**
      * Cuts a file or challenge input string into pieces, delimited by {@code delimiterPattern}
-     * @param file A filename or challenge input string
+     * @param input the String that should be tokenized
      * @param delimiterPattern The pattern string that delimits the elements
      * @return A stream of Strings
      */
-    private static Stream<String> tokens(String file, String delimiterPattern) {
-        String input = checkFile(file);
-        Scanner data = new Scanner(input); // Leave Scanner open because Stream will be closed when Scanner is closed
-        data.useDelimiter(delimiterPattern);
-        return data.tokens();
+    private final Stream<String> tokens(String input, String delimiterPattern) {
+        try (Scanner data = new Scanner(input)) {
+            data.useDelimiter(delimiterPattern);
+            // we have to take a detour, because the tokens Stream get's closed automatically when the Scanner is closed
+            List<String> result = data.tokens().toList();
+            return result.stream();
+        }
     }
 
     /**
      * Simply get a Stream containing all lines of the given {@code file}
-     * @param file A filename or challenge input string
      * @return A stream of lines
      */
-    public static Stream<String> lines(String file) {
-        return tokens(file, "\\R");
+    public final Stream<String> lines() {
+        return lines(getInput());
+    }
+    
+    /**
+     * Simply get a Stream containing all lines of the given {@code file}
+     * @param input the String that should be tokenized
+     * @return A stream of lines
+     */
+    public final Stream<String> lines(String input) {
+        return tokens(input, "\\R");
     }
 
     /**
      * Simply get a Stream containing all lines of the given {@code file}
-     * @param file A filename or challenge input string
      * @return A stream of all integers in the file
      */
-    public static IntStream ints(String file) {
-        return tokens(file, "\\D+").mapToInt(Integer::parseInt);
+    public final IntStream ints() {
+        return ints(getInput());
+    }
+    
+    /**
+     * Simply get a Stream containing all lines of the given {@code file}
+     * @param input the String that should be tokenized
+     * @return A stream of all integers in the file
+     */
+    public final IntStream ints(String input) {
+        return tokens(input, "\\D+").mapToInt(Integer::parseInt);
     }
 
     /**
      * Simply get a Stream of blocks (Strings that are separated by a blank line)
-     * @param file A filename or challenge input string
      * @return A stream of all blocks in the file
      */
-    public static Stream<String> blocks(String file) {
-        return tokens(file, "\\R{2,}");
+    public final Stream<String> blocks() {
+        return blocks(getInput());
+    }
+
+    /**
+     * Simply get a Stream of blocks (Strings that are separated by a blank line)
+     * @param input the String that should be tokenized
+     * @return A stream of all blocks in the file
+     */
+    public final Stream<String> blocks(String input) {
+        return tokens(input, "\\R{2,}");
+    }
+}
+
+/**
+ * To show that the solution for a challenge is not implemented yet
+ */
+class NotImplementedException extends RuntimeException {
+    public NotImplementedException() {
+        super();
+    }
+
+    public NotImplementedException(String message) {
+        super(message);
     }
 }
