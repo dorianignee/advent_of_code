@@ -78,6 +78,16 @@ public class Aoc {
     }
 
     /**
+     * Prepare this class for running a unit test
+     * @param day the day that will be tested
+     */
+    public Aoc prepareTest(int day) {
+        this.day = day;
+        this.useTestInput = true;
+        return this;
+    }
+
+    /**
      * Returns the input for the given day depending on {@link #customInput} and {@link #useTestInput}
      * @return the input for the given day depending on {@link #customInput} and {@link #useTestInput}
      */
