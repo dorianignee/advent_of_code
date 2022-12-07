@@ -1,3 +1,5 @@
+package de.dorianignee.aoc.challenges;
+
 public class Day4 extends Aoc {
     /**
      * Standard main-method for running the days directly

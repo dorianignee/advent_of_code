@@ -1,3 +1,5 @@
+package de.dorianignee.aoc.challenges;
+
 import java.util.Comparator;
 
 public class Day1 extends Aoc {

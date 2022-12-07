@@ -1,3 +1,5 @@
+package de.dorianignee.aoc.challenges;
+
 import java.util.*;
 import java.util.function.*;
 

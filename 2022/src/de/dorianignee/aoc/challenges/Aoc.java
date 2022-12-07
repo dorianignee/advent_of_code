@@ -1,3 +1,5 @@
+package de.dorianignee.aoc.challenges;
+
 import java.util.*;
 import java.util.stream.*;
 
@@ -84,9 +86,9 @@ public class Aoc {
             return customInput;
         }
         if (useTestInput) {
-            return readFile(String.format("debug/%02d.txt", day));
+            return readFile(String.format("/test/%02d.txt", day));
         }
-        return readFile(String.format("%02d.txt", day));
+        return readFile(String.format("/%02d.txt", day));
     }
 
     /**
