@@ -1,13 +1,9 @@
 package de.dorianignee.aoc.challenges;
 
 import java.util.*;
-import java.util.function.Consumer;
+import java.util.function.*;
 import java.util.regex.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import org.junit.platform.console.shadow.picocli.CommandLine.Command;
+import java.util.stream.*;
 
 public class Day5 extends Aoc {
     private List<? extends Deque<Character>> stacks;
