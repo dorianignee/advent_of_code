@@ -91,7 +91,7 @@ public class Aoc {
      * Returns the input for the given day depending on {@link #customInput} and {@link #useTestInput}
      * @return the input for the given day depending on {@link #customInput} and {@link #useTestInput}
      */
-    private final String getInput() {
+    public final String getInput() {
         if (customInput != null) {
             return customInput;
         }
