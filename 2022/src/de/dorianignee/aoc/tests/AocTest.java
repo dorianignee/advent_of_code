@@ -20,8 +20,8 @@ public class AocTest {
     @ParameterizedTest
     @MethodSource("intDays")
     public void testIntDays(Aoc day, int result1, int result2) {
-        assertEquals(day.challenge1(), result1);
-        assertEquals(day.challenge2(), result2);
+        assertEquals(result1, day.challenge1());
+        assertEquals(result2, day.challenge2());
     }
 
     /**
@@ -34,6 +34,29 @@ public class AocTest {
             Arguments.of(new Day2().prepareTest(2), 15, 12),
             Arguments.of(new Day3().prepareTest(3), 157, 70),
             Arguments.of(new Day4().prepareTest(4), 2, 4)
+        );
+    }
+
+    /**
+     * Test all days with String results
+     * @param day an instance of the day to test
+     * @param result1 expected result for the first challenge
+     * @param result2 expected result for the second challenge
+     */
+    @ParameterizedTest
+    @MethodSource("stringDays")
+    public void testStringDays(Aoc day, String result1, String result2) {
+        assertEquals(result1, day.strChallenge1());
+        assertEquals(result2, day.strChallenge2());
+    }
+
+    /**
+     * MethodSource for testStringDays method
+     * @return a stream of Day objects and their expected results
+     */
+    private static Stream<Arguments> stringDays() {
+        return Stream.of(
+            Arguments.of(new Day5().prepareTest(5), "CMZ", "MCD")
         );
     }
 }

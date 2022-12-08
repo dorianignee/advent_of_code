@@ -4,7 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "Launch Day5",
+            "request": "launch",
+            "mainClass": "de.dorianignee.aoc.challenges.Day5",
+            "projectName": "2022_9c5ba47e"
+        },
         {
             "type": "java",
             "name": "Launch Current File",
