@@ -1,7 +1,6 @@
 package de.dorianignee.aoc.challenges;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Day6 extends Aoc {
     /**
@@ -17,34 +16,29 @@ public class Day6 extends Aoc {
      */
     @Override
     public int challenge1() {
-        String input = getInput();
-        
-        outer:
-        for (int i = 0; i <= input.length()-4; ++i) {
-            Set<Character> characters = new HashSet<>();
-            for (int j = 0; j < 4; ++j) {
-                if (!characters.add(input.charAt(i+j))) {
-                    continue outer;
-                }
-            }
-            return i + 4;
-        }
-        return -1;
+        return getMarker(4);
     }
 
+    /**
+     * And the same, but with 14 characters
+     */
     @Override
     public int challenge2() {
+        return getMarker(14);
+    }
+
+    private int getMarker(int consecutiveCount) {
         String input = getInput();
         
         outer:
-        for (int i = 0; i <= input.length()-14; ++i) {
+        for (int i = 0; i <= input.length()-consecutiveCount; ++i) {
             Set<Character> characters = new HashSet<>();
-            for (int j = 0; j < 14; ++j) {
+            for (int j = 0; j < consecutiveCount; ++j) {
                 if (!characters.add(input.charAt(i+j))) {
                     continue outer;
                 }
             }
-            return i + 14;
+            return i + consecutiveCount;
         }
         return -1;
     }
