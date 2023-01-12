@@ -36,7 +36,8 @@ public class AocTest {
             Arguments.of(new Day4().prepareTest(4), 2, 4),
             Arguments.of(new Day6().prepareTest(6), 11, 26),
             Arguments.of(new Day7().prepareTest(7), 95437, 24933642),
-            Arguments.of(new Day8().prepareTest(8), 21, 8)
+            Arguments.of(new Day8().prepareTest(8), 21, 8),
+            Arguments.of(new Day9().prepareTest(9), 88, 36)
         );
     }
 

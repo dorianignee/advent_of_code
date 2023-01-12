@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Day9",
+            "request": "launch",
+            "mainClass": "de.dorianignee.aoc.challenges.Day9",
+            "projectName": "2022_9c5ba47e"
+        },
+        {
+            "type": "java",
             "name": "Launch Day8",
             "request": "launch",
             "mainClass": "de.dorianignee.aoc.challenges.Day8",
