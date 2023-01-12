@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Day8",
+            "request": "launch",
+            "mainClass": "de.dorianignee.aoc.challenges.Day8",
+            "projectName": "2022_9c5ba47e"
+        },
+        {
+            "type": "java",
+            "name": "Launch Collatz",
+            "request": "launch",
+            "mainClass": "de.dorianignee.aoc.challenges.Collatz",
+            "projectName": "2022_9c5ba47e"
+        },
+        {
+            "type": "java",
+            "name": "Launch SWBild",
+            "request": "launch",
+            "mainClass": "de.dorianignee.aoc.challenges.SWBild",
+            "projectName": "2022_9c5ba47e"
+        },
+        {
+            "type": "java",
+            "name": "Launch Speisekarte",
+            "request": "launch",
+            "mainClass": "de.dorianignee.aoc.challenges.Speisekarte",
+            "projectName": "2022_9c5ba47e"
+        },
+        {
+            "type": "java",
             "name": "Launch Day7",
             "request": "launch",
             "mainClass": "de.dorianignee.aoc.challenges.Day7",
