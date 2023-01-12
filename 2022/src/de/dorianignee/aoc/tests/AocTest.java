@@ -60,7 +60,15 @@ public class AocTest {
      */
     private static Stream<Arguments> stringDays() {
         return Stream.of(
-            Arguments.of(new Day5().prepareTest(5), "CMZ", "MCD")
+            Arguments.of(new Day5().prepareTest(5), "CMZ", "MCD"),
+            Arguments.of(new Day10().prepareTest(10), "13140", """
+                ##..##..##..##..##..##..##..##..##..##..
+                ###...###...###...###...###...###...###.
+                ####....####....####....####....####....
+                #####.....#####.....#####.....#####.....
+                ######......######......######......####
+                #######.......#######.......#######.....
+                """)
         );
     }
 }
