@@ -1,6 +1,5 @@
 package de.dorianignee.aoc.challenges;
 
-import java.util.*;
 import java.util.stream.Stream;
 
 public class Day10 extends Aoc {
