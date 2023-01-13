@@ -12,19 +12,6 @@ import de.dorianignee.aoc.challenges.*;
 
 public class AocTest {
     /**
-     * Test all days with int results
-     * @param day an instance of the day to test
-     * @param result1 expected result for the first challenge
-     * @param result2 expected result for the second challenge
-     */
-    @ParameterizedTest
-    @MethodSource("intDays")
-    public void testIntDays(Aoc day, int result1, int result2) {
-        assertEquals(result1, day.challenge1());
-        assertEquals(result2, day.challenge2());
-    }
-
-    /**
      * MethodSource for testIntDays method
      * @return a stream of Day objects and their expected results
      */
@@ -42,19 +29,6 @@ public class AocTest {
     }
 
     /**
-     * Test all days with String results
-     * @param day an instance of the day to test
-     * @param result1 expected result for the first challenge
-     * @param result2 expected result for the second challenge
-     */
-    @ParameterizedTest
-    @MethodSource("stringDays")
-    public void testStringDays(Aoc day, String result1, String result2) {
-        assertEquals(result1, day.strChallenge1());
-        assertEquals(result2, day.strChallenge2());
-    }
-
-    /**
      * MethodSource for testStringDays method
      * @return a stream of Day objects and their expected results
      */
@@ -68,7 +42,34 @@ public class AocTest {
                 #####.....#####.....#####.....#####.....
                 ######......######......######......####
                 #######.......#######.......#######.....
-                """)
+                """),
+            Arguments.of(new Day11().prepareTest(11), "10605", "2713310158")
         );
+    }
+
+    /**
+     * Test all days with int results
+     * @param day an instance of the day to test
+     * @param result1 expected result for the first challenge
+     * @param result2 expected result for the second challenge
+     */
+    @ParameterizedTest
+    @MethodSource("intDays")
+    public void testIntDays(Aoc day, int result1, int result2) {
+        assertEquals(result1, day.challenge1());
+        assertEquals(result2, day.challenge2());
+    }
+
+    /**
+     * Test all days with String results
+     * @param day an instance of the day to test
+     * @param result1 expected result for the first challenge
+     * @param result2 expected result for the second challenge
+     */
+    @ParameterizedTest
+    @MethodSource("stringDays")
+    public void testStringDays(Aoc day, String result1, String result2) {
+        assertEquals(result1, day.strChallenge1());
+        assertEquals(result2, day.strChallenge2());
     }
 }
