@@ -180,6 +180,38 @@ public class Aoc {
     public final Stream<String> blocks(String input) {
         return tokens(input, "\\R{2,}");
     }
+
+    /**
+     * Find all neighbor cells for each cell in a grid
+     * @param <T> the type of neighbors
+     * @param neighborhood a two dimensional grid
+     * @param withDiagonals if true, all eight neigboring cells are added,
+     * otherwise only cells in the same row or column are added
+     */
+    public final <T> void neighbors(Neighbor<T>[][] neighborhood, boolean withDiagonals) {
+        for (int y = 0; y < neighborhood.length; ++y) {
+            for (int x = 0; x < neighborhood[y].length; ++x) {
+                Neighbor<T> currentCell = neighborhood[y][x];
+
+                // find all neighbors of this cell
+                for (int dy = -1; dy <= 1; ++dy) {
+                    for (int dx = -1; dx <= 1; ++dx) {
+                        // don't add currentCell
+                        if (dx == 0 && dy == 0) 
+                            continue;
+
+                        // only add cells in same row or column, if not withDiagonals
+                        if (!withDiagonals && dx != 0 && dy != 0)
+                            continue;
+
+                        try {
+                            currentCell.addNeighbor(neighborhood[y + dy][x + dx].identity());
+                        } catch (ArrayIndexOutOfBoundsException e) {} // on the edges, this will be thrown. No need to do anything.
+                    }
+                }
+            }
+        }
+    }
 }
 
 /**
@@ -193,4 +225,12 @@ class NotImplementedException extends RuntimeException {
     public NotImplementedException(String message) {
         super(message);
     }
+}
+
+/**
+ * This can be used, so elements of a two-dimensional grid can access their neighbor elements
+ */
+interface Neighbor<T> {
+    public void addNeighbor(T neighbor);
+    public T identity();
 }
