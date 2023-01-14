@@ -188,10 +188,10 @@ public class Aoc {
      * @param withDiagonals if true, all eight neigboring cells are added,
      * otherwise only cells in the same row or column are added
      */
-    public final <T> void neighbors(Neighbor<T>[][] neighborhood, boolean withDiagonals) {
+    public final <T extends Neighbor<? super T>> void neighbors(T[][] neighborhood, boolean withDiagonals) {
         for (int y = 0; y < neighborhood.length; ++y) {
             for (int x = 0; x < neighborhood[y].length; ++x) {
-                Neighbor<T> currentCell = neighborhood[y][x];
+                T currentCell = neighborhood[y][x];
 
                 // find all neighbors of this cell
                 for (int dy = -1; dy <= 1; ++dy) {
@@ -205,7 +205,7 @@ public class Aoc {
                             continue;
 
                         try {
-                            currentCell.addNeighbor(neighborhood[y + dy][x + dx].identity());
+                            currentCell.addNeighbor(neighborhood[y + dy][x + dx]);
                         } catch (ArrayIndexOutOfBoundsException e) {} // on the edges, this will be thrown. No need to do anything.
                     }
                 }
@@ -232,5 +232,4 @@ class NotImplementedException extends RuntimeException {
  */
 interface Neighbor<T> {
     public void addNeighbor(T neighbor);
-    public T identity();
 }

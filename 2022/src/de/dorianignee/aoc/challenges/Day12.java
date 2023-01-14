@@ -99,10 +99,5 @@ public class Day12 extends Aoc {
         public void addNeighbor(Square neighbor) {
             this.neighbors.add(neighbor);
         }
-
-        @Override
-        public Square identity() {
-            return this;
-        }
     }
 }
