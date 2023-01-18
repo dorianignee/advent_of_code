@@ -26,7 +26,7 @@ public class AocTest {
             day(9, 88, 36),
             day(12, 31, 29),
             day(13, 13, 140),
-            day(14, 24, 0)
+            day(14, 24, 93)
         );
     }
 
