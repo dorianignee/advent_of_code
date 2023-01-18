@@ -2,18 +2,11 @@ package de.dorianignee.aoc.challenges;
 
 import java.util.*;
 
-/**
- * Today, we are comparing the two compartments of a rucksack and find the common item
- */
 public class Day3 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day3().solve(3);
-    }
     
+    /**
+     * Today, we are comparing the two compartments of a rucksack and find the common item
+     */
     @Override
     public int challenge1() {
         return lines()
@@ -22,6 +15,9 @@ public class Day3 extends Aoc {
             .sum();
     }
 
+    /**
+     * The second task is to find common items in the rucksacks of groups of three elves
+     */
     @Override
     public int challenge2() {
         List<Rucksack> rucksacks = lines().map(Rucksack::new).toList();

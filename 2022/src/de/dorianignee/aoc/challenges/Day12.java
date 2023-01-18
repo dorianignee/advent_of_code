@@ -7,14 +7,6 @@ public class Day12 extends Aoc {
     private Square endSquare;
 
     /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day12().solve(12);
-    }
-
-    /**
      * Todays challenge is to find the shortest path up a hill
      */
     @Override

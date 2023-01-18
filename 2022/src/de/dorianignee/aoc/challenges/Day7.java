@@ -3,14 +3,6 @@ package de.dorianignee.aoc.challenges;
 import java.util.*;
 
 public class Day7 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day7().solve(7);
-    }
-
     private List<String> lines;
     private Directory rootDirectory;
     private Directory currentDirectory;

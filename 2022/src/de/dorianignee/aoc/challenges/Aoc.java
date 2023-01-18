@@ -1,6 +1,7 @@
 package de.dorianignee.aoc.challenges;
 
 import java.util.*;
+import java.util.regex.*;
 import java.util.stream.*;
 
 /**
@@ -25,10 +26,21 @@ public class Aoc {
     private String customInput = null;
 
     /**
+     * Creates an object of type Aoc
+     * Sets day according to class name of subclass
+     */
+    public Aoc() {
+        String className = getClass().getSimpleName();
+        Matcher matcher = Pattern.compile("Day(\\d+)").matcher(className);
+
+        if (matcher.matches())
+            day = Integer.parseInt(matcher.group(1));
+    }
+
+    /**
      * outputs the results of the daily challenges
      */
-    public final void solve(int day) {
-        this.day = day;
+    public final void solve() {
         if (useTestInput || customInput != null) {
             System.out.println("#### USING DEBUG INPUT ####");
         }
@@ -79,12 +91,36 @@ public class Aoc {
 
     /**
      * Prepare this class for running a unit test
-     * @param day the day that will be tested
      */
-    public Aoc prepareTest(int day) {
-        this.day = day;
+    public Aoc prepareTest() {
         this.useTestInput = true;
         return this;
+    }
+
+    /**
+     * solve the latest day in the package
+     * @param args optional first argument: SimpleName of the class to solve (e.g. "Day1")
+     */
+    public static void main(String[] args) throws ReflectiveOperationException{
+        Class<? extends Aoc> day = null;
+
+        if (args.length > 0) {
+            // find day passed in arguments
+            day = Class.forName("de.dorianignee.aoc.challenges." + args[0]).asSubclass(Aoc.class);
+        } else {
+            // find newest day
+            for (int dayNum = 1; dayNum <= 25; ++dayNum){
+                try {
+                    day = Class.forName("de.dorianignee.aoc.challenges.Day" + dayNum).asSubclass(Aoc.class);
+                } catch(ClassNotFoundException e) {
+                    break;
+                }
+            }
+        }
+
+        // solve day
+        if (day != null) 
+            day.getConstructor().newInstance().solve();
     }
 
     /**

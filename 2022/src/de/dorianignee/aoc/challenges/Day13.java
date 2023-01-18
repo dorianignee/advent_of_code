@@ -5,14 +5,6 @@ import java.util.*;
 import de.dorianignee.aoc.challenges.day13.*;
 
 public class Day13 extends Aoc {
-     /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day13().solve(13);
-    }
-
     /**
      * Todays first challenge is to compare two nested lists
      */

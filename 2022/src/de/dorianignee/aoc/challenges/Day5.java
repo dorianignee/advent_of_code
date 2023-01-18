@@ -8,14 +8,6 @@ import java.util.stream.*;
 public class Day5 extends Aoc {
     private List<? extends Deque<Character>> stacks;
 
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day5().solve(5);
-    }
-
     @Override
     public String strChallenge1() {
         return prepareResults(Command::executeWithSingleContainers);

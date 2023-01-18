@@ -1,13 +1,6 @@
 package de.dorianignee.aoc.challenges;
 
 public class Day4 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day4().solve(4);
-    }
 
     /**
      * The first challenge of today asks us to find completely overlapping sections of two elves

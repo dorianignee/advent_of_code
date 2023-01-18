@@ -59,7 +59,7 @@ public class AocTest {
     @MethodSource("intDays")
     public void testIntDays(int numDay, int result1, int result2) throws ReflectiveOperationException {
         Aoc day = (Aoc) Class.forName("de.dorianignee.aoc.challenges.Day" + numDay).getDeclaredConstructor().newInstance();
-        day.prepareTest(numDay);
+        day.prepareTest();
 
         assertEquals(result1, day.challenge1());
         assertEquals(result2, day.challenge2());
@@ -75,7 +75,7 @@ public class AocTest {
     @MethodSource("stringDays")
     public void testStringDays(int numDay, String result1, String result2) throws ReflectiveOperationException {
         Aoc day = (Aoc) Class.forName("de.dorianignee.aoc.challenges.Day" + numDay).getDeclaredConstructor().newInstance();
-        day.prepareTest(numDay);
+        day.prepareTest();
 
         assertEquals(result1, day.strChallenge1());
         assertEquals(result2, day.strChallenge2());

@@ -3,13 +3,6 @@ package de.dorianignee.aoc.challenges;
 import java.util.*;
 
 public class Day6 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day6().solve(6);
-    }
 
     /**
      * Today, we have to find the first occurence of four different characters in a String

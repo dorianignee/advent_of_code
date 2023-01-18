@@ -4,13 +4,6 @@ import java.util.*;
 import java.util.function.*;
 
 public class Day11 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day11().solve(11);
-    }
 
     /**
      * Todays first challenge is to determine the two monkeys that tease you the most

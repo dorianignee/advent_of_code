@@ -4,13 +4,6 @@ import java.util.*;
 import java.util.function.*;
 
 public class Day2 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day2().solve(2);    
-    }
 
     /**
      * Today, we are playing a game of Rock, Paper, Scissors

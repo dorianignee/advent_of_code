@@ -5,14 +5,6 @@ import java.util.stream.Stream;
 
 public class Day14 extends Aoc {
     /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day14().solve(14);
-    }
-
-    /**
      * Todays first challenge is to count the number of sand grains that a pre-defined structure can hold
      * before the sand starts to fall into the void
      */

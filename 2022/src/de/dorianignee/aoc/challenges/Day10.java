@@ -3,13 +3,6 @@ package de.dorianignee.aoc.challenges;
 import java.util.stream.Stream;
 
 public class Day10 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day10().solve(10);
-    }    
 
     /**
      * Todays first challenge is to find the sum of all "signal strengths" of every 40th cycle of a cpu,

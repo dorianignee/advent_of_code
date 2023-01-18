@@ -3,13 +3,6 @@ package de.dorianignee.aoc.challenges;
 import java.util.*;
 
 public class Day8 extends Aoc {
-    /**
-     * Standard main-method for running the days directly
-     * @param args are ignored
-     */
-    public static void main(String[] args) {
-        new Day8().solve(8);
-    }
 
     /**
      * Todays first task is to count how many trees are visible from the outside of the grid
