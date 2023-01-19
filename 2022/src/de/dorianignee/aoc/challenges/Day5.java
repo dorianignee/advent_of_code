@@ -8,11 +8,18 @@ import java.util.stream.*;
 public class Day5 extends Aoc {
     private List<? extends Deque<Character>> stacks;
 
+    /**
+     * Todays first challenge is to rearrange a stack of containers
+     */
     @Override
     public String strChallenge1() {
         return prepareResults(Command::executeWithSingleContainers);
     }
 
+    /**
+     * The second challenge is to rearrange a stack of containers 
+     * with a lifter that can carry multiple containers at once
+     */
     @Override
     public String strChallenge2() {
         return prepareResults(Command::executeWithBlocks);

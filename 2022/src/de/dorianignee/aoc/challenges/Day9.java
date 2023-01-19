@@ -40,30 +40,26 @@ public class Day9 extends Aoc {
         return ropeParts[9].getVisitedPositionsCount();
     }
 
-    private static record Position(int x, int y) {}
-
     private static class RopePart {
-        Position position = new Position(0, 0);
+        Point position = new Point(0, 0);
 
-        Set<Position> visitedPositions = new HashSet<>(List.of(new Position(0, 0)));
+        Set<Point> visitedPositions = new HashSet<>(List.of(new Point(0, 0)));
         RopePart follower = null;
 
         private static enum Direction {
-            RIGHT(1, 0),
-            LEFT(-1,0),
-            UP(0,1),
-            DOWN(0,-1);
+            RIGHT(new Point(1, 0)),
+            LEFT(new Point(-1,0)),
+            UP(new Point (0,1)),
+            DOWN(new Point (0,-1));
 
-            private int dx;
-            private int dy;
+            private Point vector;
 
-            Direction(int dx, int dy) {
-                this.dx = dx;
-                this.dy = dy;
+            Direction(Point vector) {
+                this.vector = vector;
             }
 
-            public Position next(Position from) {
-                return new Position(from.x + dx, from.y + dy);
+            public Point next(Point from) {
+                return from.translate(vector);
             }
         }
 
@@ -95,13 +91,14 @@ public class Day9 extends Aoc {
             return visitedPositions.size();
         }
 
-        private void follow(Position head) {
-            int dx = Integer.signum(head.x - position.x);
-            int dy = Integer.signum(head.y - position.y);
+        private void follow(Point head) {
+            int dx = Integer.signum(head.x() - position.x());
+            int dy = Integer.signum(head.y() - position.y());
+            Point vector = new Point(dx, dy);
 
             // if distance is more than one square, follow head
-            if (Math.abs(head.x - position.x) > 1 || Math.abs(head.y - position.y) > 1) {
-                position = new Position(position.x + dx, position.y + dy);
+            if (position.verticalDistance(head) > 1 || position.horizontalDistance(head) > 1) {
+                position = position.translate(vector);
 
                 if (follower == null) {
                     visitedPositions.add(position); // we only need to track the positions of the last node

@@ -25,7 +25,7 @@ public class Day14 extends Aoc {
         // read structures
         List<Structure> structures = new LinkedList<>(lines().map(Structure::new).toList());
         int height = structures.parallelStream()
-                               .mapToInt(structure -> structure.bounds().y)
+                               .mapToInt(structure -> structure.bounds().y())
                                .max()
                                .getAsInt();
 
@@ -36,8 +36,6 @@ public class Day14 extends Aoc {
         // return grains
         return new Slice(structures).pourSand();
     }
-
-    private static record Point(int x, int y) {}
 
     private static class Structure {
         Point[] points;
@@ -72,20 +70,20 @@ public class Day14 extends Aoc {
 
             for (Point point: points) {
                 // lines are always horizontal or vertical
-                if (previous.x == point.x) {
+                if (previous.x() == point.x()) {
                     // draw vertical
-                    int minY = Math.min(previous.y, point.y);
-                    int maxY = Math.max(previous.y, point.y);
+                    int minY = Math.min(previous.y(), point.y());
+                    int maxY = Math.max(previous.y(), point.y());
 
                     for (int y = minY; y <= maxY; ++y) {
-                        slice.set(point.x, y);
+                        slice.set(point.x(), y);
                     }
                 } else {
                     // draw horizontal
-                    int minX = Math.min(previous.x, point.x);
-                    int maxX = Math.max(previous.x, point.x);
+                    int minX = Math.min(previous.x(), point.x());
+                    int maxX = Math.max(previous.x(), point.x());
 
-                    slice.set(minX, maxX, point.y);
+                    slice.set(minX, maxX, point.y());
                 }
                 previous = point;
             }
@@ -99,7 +97,7 @@ public class Day14 extends Aoc {
             // get max height of structures
             // width is automatically handled by the BitSet
             int height = structures.stream()
-                                   .mapToInt(structure -> structure.bounds().y)
+                                   .mapToInt(structure -> structure.bounds().y())
                                    .max()
                                    .getAsInt();
 
