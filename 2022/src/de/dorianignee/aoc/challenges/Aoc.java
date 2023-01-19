@@ -13,17 +13,17 @@ public class Aoc {
      * The day of the current challenge. 
      * Set this, so the correct input file can be selected
      */
-    private int day = 0;
+    protected int day = 0;
 
     /**
      * Set this true, to use the files in the res/test folder
      */
-    private boolean useTestInput = false;
+    protected boolean useTestInput = false;
 
     /**
      * Set this to custom values for debugging
      */
-    private String customInput = null;
+    protected String customInput = null;
 
     /**
      * Creates an object of type Aoc
