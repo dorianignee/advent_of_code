@@ -2,6 +2,8 @@ package de.dorianignee.aoc.challenges;
 
 import java.util.*;
 
+import de.dorianignee.aoc.challenges.helpers.Neighbor;
+
 public class Day12 extends Aoc {
     private Square startSquare;
     private Square endSquare;

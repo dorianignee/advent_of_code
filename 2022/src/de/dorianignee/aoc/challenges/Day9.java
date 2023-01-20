@@ -2,6 +2,8 @@ package de.dorianignee.aoc.challenges;
 
 import java.util.*;
 
+import de.dorianignee.aoc.challenges.helpers.Point;
+
 public class Day9 extends Aoc {
 
     /**

@@ -3,6 +3,8 @@ package de.dorianignee.aoc.challenges;
 import java.util.*;
 import java.util.stream.Stream;
 
+import de.dorianignee.aoc.challenges.helpers.Point;
+
 public class Day14 extends Aoc {
     /**
      * Todays first challenge is to count the number of sand grains that a pre-defined structure can hold
