@@ -30,13 +30,13 @@ public class RangeTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {7, 5, 11})
+    @ValueSource(ints = {7, 5, 10})
     public void range_contains_number(int value) {
         assertTrue(new Range(5, 11).contains(value));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {100, 4, 12})
+    @ValueSource(ints = {100, 4, 11})
     public void range_doesnt_contain_number(int value) {
         assertFalse(new Range(5, 11).contains(value));
     }
@@ -48,12 +48,12 @@ public class RangeTest {
 
     @Test
     public void range_intersects_start() {
-        assertTrue(new Range(-3, 12).intersects(new Range(-10, -3)));
+        assertTrue(new Range(-3, 12).intersects(new Range(-10, -2)));
     }
 
     @Test
     public void range_intersects_end() {
-        assertTrue(new Range(-3, 12).intersects(new Range(12, 15)));
+        assertTrue(new Range(-3, 12).intersects(new Range(11, 15)));
     }
 
     @Test
@@ -73,12 +73,12 @@ public class RangeTest {
 
     @Test
     public void range_not_intersects_start() {
-        assertFalse(new Range(-3, 12).intersects(new Range(-10, -4)));
+        assertFalse(new Range(-3, 12).intersects(new Range(-10, -3)));
     }
 
     @Test
     public void range_not_intersects_end() {
-        assertFalse(new Range(-3, 12).intersects(new Range(13, 15)));
+        assertFalse(new Range(-3, 12).intersects(new Range(12, 15)));
     }
 
     @Test
@@ -118,12 +118,12 @@ public class RangeTest {
 
     @Test
     public void range_mergeable_start() {
-        assertTrue(new Range(-3, 12).mergeableWith(new Range(-10, -3)));
+        assertTrue(new Range(-3, 12).mergeableWith(new Range(-10, -2)));
     }
 
     @Test
     public void range_mergeable_end() {
-        assertTrue(new Range(-3, 12).mergeableWith(new Range(12, 15)));
+        assertTrue(new Range(-3, 12).mergeableWith(new Range(11, 15)));
     }
 
     @Test
@@ -138,12 +138,12 @@ public class RangeTest {
 
     @Test
     public void range_mergeable_before_start() {
-        assertTrue(new Range(-3, 12).mergeableWith(new Range(-10, -4)));
+        assertTrue(new Range(-3, 12).mergeableWith(new Range(-10, -3)));
     }
 
     @Test
     public void range_mergeable_after_end() {
-        assertTrue(new Range(-3, 12).mergeableWith(new Range(13, 15)));
+        assertTrue(new Range(-3, 12).mergeableWith(new Range(12, 15)));
     }
 
     @Test
@@ -153,12 +153,12 @@ public class RangeTest {
 
     @Test
     public void range_not_mergeable_start() {
-        assertFalse(new Range(-3, 12).mergeableWith(new Range(-10, -5)));
+        assertFalse(new Range(-3, 12).mergeableWith(new Range(-10, -4)));
     }
 
     @Test
     public void range_not_mergeable_end() {
-        assertFalse(new Range(-3, 12).mergeableWith(new Range(14, 15)));
+        assertFalse(new Range(-3, 12).mergeableWith(new Range(13, 15)));
     }
 
     // Method source for mergeWith and tryMergeWith tests
@@ -166,13 +166,13 @@ public class RangeTest {
     public static Stream<Arguments> mergeableRanges() {
         return Stream.of(
             Arguments.of(new Range(-3, 15), new Range(0, 15)),
-            Arguments.of(new Range(-10, 12), new Range(-10, -3)),
-            Arguments.of(new Range(-3, 15), new Range(12, 15)),
+            Arguments.of(new Range(-10, 12), new Range(-10, -2)),
+            Arguments.of(new Range(-3, 15), new Range(11, 15)),
             Arguments.of(new Range(-3, 12), new Range(3, 5)),
             Arguments.of(new Range(-3, 12), new Range(-3, 12)),
             Arguments.of(new Range(-10, 20), new Range(-10, 20)),
-            Arguments.of(new Range(-10, 12), new Range(-10, -4)),
-            Arguments.of(new Range(-3, 15), new Range(13, 15))
+            Arguments.of(new Range(-10, 12), new Range(-10, -3)),
+            Arguments.of(new Range(-3, 15), new Range(12, 15))
         );
     }
 
@@ -181,8 +181,8 @@ public class RangeTest {
     public static Stream<Arguments> nonMergeableRanges() {
         return Stream.of(
             Arguments.of(new Range(33, 40)),
-            Arguments.of(new Range(-10, -5)),
-            Arguments.of(new Range(14, 15))
+            Arguments.of(new Range(-10, -4)),
+            Arguments.of(new Range(13, 15))
         );
     }
 
@@ -213,16 +213,16 @@ public class RangeTest {
     // Method source for length Tests
     public static Stream<Arguments> lengths() {
         return Stream.of(
-            Arguments.of(16, new Range(0, 15)),
-            Arguments.of(8, new Range(-10, -3)),
-            Arguments.of(4, new Range(12, 15)),
-            Arguments.of(3, new Range(3, 5)),
-            Arguments.of(16, new Range(-3, 12)),
-            Arguments.of(7, new Range(-10, -4)),
-            Arguments.of(3, new Range(13, 15)),
-            Arguments.of(8, new Range(33, 40)),
-            Arguments.of(6, new Range(-10, -5)),
-            Arguments.of(2, new Range(14, 15))
+            Arguments.of(15, new Range(0, 15)),
+            Arguments.of(7, new Range(-10, -3)),
+            Arguments.of(3, new Range(12, 15)),
+            Arguments.of(2, new Range(3, 5)),
+            Arguments.of(15, new Range(-3, 12)),
+            Arguments.of(6, new Range(-10, -4)),
+            Arguments.of(2, new Range(13, 15)),
+            Arguments.of(7, new Range(33, 40)),
+            Arguments.of(5, new Range(-10, -5)),
+            Arguments.of(1, new Range(14, 15))
         );
     }
 

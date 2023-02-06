@@ -128,7 +128,7 @@ public class Day15 extends Aoc {
 
         public Optional<Range> overlapInLine(int line) {
             int overlap = distanceToBeacon() - position.verticalDistance(new Point(0, line)) ;
-            return overlap < 0? Optional.empty() : Optional.of(new Range(position.x() - overlap, position.x() + overlap));
+            return overlap < 0? Optional.empty() : Optional.of(Range.closed(position.x() - overlap, position.x() + overlap));
         }
     }
 }
